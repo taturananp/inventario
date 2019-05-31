@@ -1,0 +1,40 @@
+import sys
+import platform
+import psutil
+
+nome_maquina = platform.node() #PEGA O NOME DA MAQUINA
+maquina = platform.machine() #PEGA O TIPO DE PROCESSADOR
+versao = platform.platform() #PEGA VERSAO DO WINDOWS
+psutil.virtual_memory() #PEGA MEMORIA
+
+
+def main():
+    values = psutil.virtual_memory()  # CONVERSAO MEMORIA
+    total = values.total >> 20
+
+    obj_disk = psutil.disk_usage('/')  # CONVERSAO HD
+    total_disk = obj_disk.total / (2 ** 30)
+
+    opcao = -1
+    while opcao != 0:
+        print("-------------------------")
+        print('\t'"INVENTARIO")
+        print("-------------------------")
+        opcao = input('1 - Salvar \n2 - Escolher diretorio \n0 - SAIR \nOPÇÃO: ')
+        if opcao == 1:
+            nome_do_arquivo = input("Nome do arquivo: ")
+            arquivo = open("{}.txt".format(nome_do_arquivo), "a")  # CRIAR UM TXT DE SAIDA
+            arquivo.write('Nome do Computador: {}\n'.format(nome_maquina))
+            arquivo.write('Processaor: {}\n'.format(maquina))
+            arquivo.write('Versao do Windows: {}\n'.format(versao))
+            arquivo.write('Memoria: {}\n'.format(total))
+            arquivo.write('HD: {}\n'.format(total_disk))
+        elif opcao == 2:
+            #DIGITAR CODIGO
+            # DIGITAR CODIGO
+            # DIGITAR CODIGO
+            # DIGITAR CODIGO
+        elif opcao == 0
+            print ('Voce saiu do inventario')
+        else
+            print('Opcao invalida')
